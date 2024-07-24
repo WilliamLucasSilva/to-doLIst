@@ -24,6 +24,7 @@ class BaseElement {
     }
 
     create() {
+
         const createElement = (type, classes = [], attributes = {}) => {
             const element = document.createElement(type)
             classes.forEach(cls => element.classList.add(cls))
@@ -43,12 +44,19 @@ class BaseElement {
             this.element.style.display = this.open ? "block" : "none"
             this.elementChildren[0].innerHTML = this.open ? `${SYMBOLS.open} ` : `${SYMBOLS.close} `
         }
+
+        
     
         if (this.type === "folder") {
             this.button = createElement("button", ["folder", "folderButton"])
             this.elementChildren = [createElement("span"), createElement("span")]
+            this.elementChildren2 = [createElement("span"), createElement("span")]
             this.elementChildren[0].innerHTML = `${SYMBOLS.open} `
             this.elementChildren[1].textContent = `${this.name}`
+            this.elementChildren2[0].textContent = `100%`
+            this.elementChildren2[0].style.marginLeft = `5px`
+            this.elementChildren2[1].textContent = `0 / 0`
+            this.elementChildren2[1].style.marginLeft = `20px`
             this.percentDiv = document.createElement('div')
             this.percentDiv.classList.add("percent")
             this.percentChildrenDiv = document.createElement('div')
@@ -57,6 +65,7 @@ class BaseElement {
             appendChildren(this.button, this.elementChildren)
             this.percentDiv.appendChild(this.percentChildrenDiv)
             this.button.appendChild(this.percentDiv)
+            appendChildren(this.button, this.elementChildren2)
 
     
             this.element = createElement("div", ["folder"])
@@ -89,6 +98,7 @@ class BaseElement {
     
             this.elementChildren[2].addEventListener('change', () => {
                 this.element.classList.toggle('mark', this.elementChildren[2].checked)
+
                 let elements = [[], []];
                 Object.values(this.daddy.children).forEach(e => {
                     if (e.type == 'task') {
@@ -107,23 +117,17 @@ class BaseElement {
                     this.daddy.element.appendChild(elements[0][i])
                 }
 
-                let tasks = Object.values(this.daddy.children).filter((e) => e.type == 'task')
-                let TaskTotal = tasks.length
-                let TaskCompleted = elements[1].length
-                let Percent = (TaskCompleted * 100) / TaskTotal
-
-                this.daddy.percentChildrenDiv.style.width = `${Percent}%`
-
+                this.daddy.percentAtt(this.daddy)
                 
                 for (let i = 0; i < elements[1].length; i++) {
                     this.daddy.element.appendChild(elements[1][i])
                 }
             })
+            
         } else {
             console.error("Tipo desconhecido:", this.type);
-        }
+        }           
     }
-    
 }
 
 class Folder extends BaseElement {
@@ -132,6 +136,7 @@ class Folder extends BaseElement {
         this.children = {};
         this.open = true;
         this.path = name != 'root' ? path == '/' ? `/${name}` : path + `/${name}` : '/'
+        this.complete = true
     }
 
     addChildren(name, type) {
@@ -146,8 +151,32 @@ class Folder extends BaseElement {
                 default:
                     alert(`O tipo '${type}' é desconhecido`);
             }
+            
+            this.percentAtt(this)
+            
         } else {
             alert(`O ${type} '${name}' já existe.`);
+        }
+    }
+
+    percentAtt(obj) {
+        if(obj.name != "root"){
+            let children = Object.values(obj.children)
+            let childrenTotal = children.length
+            let childrenCompleted = children.filter( e => e.type == 'task').filter(e => e.elementChildren[2].checked).length +  children.filter( e => e.type == 'folder').filter(e => e.complete).length
+            let Percent = Math.round((childrenCompleted * 100) / childrenTotal)
+
+            obj.percentChildrenDiv.style.width = `${Percent}%`
+            if(Percent == 100){
+                obj.complete = true
+            }else{
+                obj.complete = false
+            }
+
+            this.elementChildren2[0].textContent = `${Percent}%`
+            this.elementChildren2[1].textContent = `${childrenCompleted} / ${childrenTotal}`
+
+            obj.daddy.percentAtt(obj.daddy)
         }
     }
 
