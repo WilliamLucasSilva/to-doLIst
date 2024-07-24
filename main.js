@@ -4,14 +4,13 @@ const SYMBOLS = {
     task: "&#8739;",
 };
 
-const MAIN = document.getElementById("main");
-
 const SHARE = {
     NAME: document.getElementById("inputName"),
     TYPE: document.getElementById("toDo").checked ? "task" : "folder",
 };
 
-var selected = ['/','/']
+var selectedExclude = [null, null]
+var selected = ['/', '/']
 
 // Classes
 
@@ -38,7 +37,8 @@ class BaseElement {
     
         const toggleFolder = (event) => {
             event.stopPropagation()
-            changeSelected(this.path)
+            changeSelected(this.path, selected)
+            changeExclude({path: this.daddy.path, name: this.name})
             this.open = !this.open;
             this.element.style.display = this.open ? "block" : "none"
             this.elementChildren[0].innerHTML = this.open ? `${SYMBOLS.open} ` : `${SYMBOLS.close} `
@@ -49,15 +49,24 @@ class BaseElement {
             this.elementChildren = [createElement("span"), createElement("span")]
             this.elementChildren[0].innerHTML = `${SYMBOLS.open} `
             this.elementChildren[1].textContent = `${this.name}`
+            this.percentDiv = document.createElement('div')
+            this.percentDiv.classList.add("percent")
+            this.percentChildrenDiv = document.createElement('div')
+            this.percentChildrenDiv.classList.add("percentChildren")
+
             appendChildren(this.button, this.elementChildren)
+            this.percentDiv.appendChild(this.percentChildrenDiv)
+            this.button.appendChild(this.percentDiv)
+
     
             this.element = createElement("div", ["folder"])
-            appendChildren(this.daddy, [this.button, this.element])
+            appendChildren(this.daddy.element, [this.button, this.element])
     
             this.button.addEventListener("click", toggleFolder)
             this.element.addEventListener("click", (event) => {
                 event.stopPropagation();
-                changeSelected(this.path)
+                changeSelected(this.path, selected)
+                changeExclude({path: this.daddy.path, name: this.name})
             })
         } else if (this.type === "task") {
             this.element = createElement("div", ["task"]);
@@ -71,11 +80,44 @@ class BaseElement {
 
             appendChildren(this.elementChildren[0], this.elementChildren[1]);
             appendChildren(this.element, [this.elementChildren[0], this.elementChildren[2]]);
-            this.daddy.appendChild(this.element);
+            this.daddy.element.appendChild(this.element);
+
+            this.element.addEventListener('click', (event) => {
+                event.stopPropagation()
+                changeExclude({path: this.daddy.path, name: this.name})
+            })
     
             this.elementChildren[2].addEventListener('change', () => {
                 this.element.classList.toggle('mark', this.elementChildren[2].checked)
+                let elements = [[], []];
+                Object.values(this.daddy.children).forEach(e => {
+                    if (e.type == 'task') {
+                        if (e.elementChildren[2].checked) {
+                            elements[1].push(e.element)
+                        } else {
+                            elements[0].push(e.element)
+                        }
+                    } else {
+                        elements[0].push(e.button)
+                        elements[0].push(e.element)
+                    }
+                });    
+
+                for (let i = 0; i < elements[0].length; i++) {
+                    this.daddy.element.appendChild(elements[0][i])
+                }
+
+                let tasks = Object.values(this.daddy.children).filter((e) => e.type == 'task')
+                let TaskTotal = tasks.length
+                let TaskCompleted = elements[1].length
+                let Percent = (TaskCompleted * 100) / TaskTotal
+
+                this.daddy.percentChildrenDiv.style.width = `${Percent}%`
+
                 
+                for (let i = 0; i < elements[1].length; i++) {
+                    this.daddy.element.appendChild(elements[1][i])
+                }
             })
         } else {
             console.error("Tipo desconhecido:", this.type);
@@ -96,10 +138,10 @@ class Folder extends BaseElement {
         if (!this.children[name]) {
             switch (type) {
                 case "folder":
-                    this.children[name] = new Folder(this.path, this.element, name);
+                    this.children[name] = new Folder(this.path, this, name);
                     break;
                 case "task":
-                    this.children[name] = new Task(this.element, name);
+                    this.children[name] = new Task(this.path, this, name);
                     break;
                 default:
                     alert(`O tipo '${type}' é desconhecido`);
@@ -110,11 +152,24 @@ class Folder extends BaseElement {
     }
 
     remove(name) {
-        if (this.children[name]) {
+
+            switch(this.children[name].type){
+                case 'folder':
+                    this.element.removeChild(this.children[name].button)
+                    this.element.removeChild(this.children[name].element)
+                break;
+                case 'task':
+                    this.element.removeChild(this.children[name].element)
+                break;
+                default:
+                    alert(`'${name}' não existe.`)
+                break;
+            }
+
             delete this.children[name];
-        } else {
-            console.log(`'${name}' não existe.`);
-        }
+            changeSelected(this.path, selected)
+
+            
     }
 
     search(name) {
@@ -124,7 +179,7 @@ class Folder extends BaseElement {
 }
 
 class Task extends BaseElement {
-    constructor(daddy, name, construct = true) {
+    constructor(path, daddy, name, construct = true) {
         super(daddy, name, "task", construct);
     }
 }
@@ -167,7 +222,7 @@ class FileSystem {
         if (folder) {
             return folder.search(name);
         } else {
-            console.log(`O caminho '${path}' não existe.`);
+            alert(`O caminho '${path}' não existe.`);
             return null;
         }
     }
@@ -188,9 +243,15 @@ class FileSystem {
 
 var system = new FileSystem();
 
-function changeSelected(obj) {
-    selected[1] = selected[0];
-    selected[0] = obj;
+function changeSelected(obj, select) {
+    select[1] = select[0];
+    select[0] = obj;
+}
+
+function changeExclude(obj) {
+    if(obj != "/"){
+        changeSelected(obj, selectedExclude)
+    }
 }
 
 document.getElementById("send").addEventListener("click", () => {
@@ -203,3 +264,9 @@ document.getElementById("send").addEventListener("click", () => {
 
     system.addChildren(selected[0], NAME, SHARE.TYPE);
 });
+
+document.getElementById("exclude").addEventListener("click", () => {
+    if(selectedExclude[0] != null){
+        system.remove(selectedExclude[0].path, selectedExclude[0].name)
+    }
+})

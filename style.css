@@ -207,6 +207,7 @@ footer > p > a{
     font-size: 21px;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
 }
 
 .folderButton > * {
@@ -225,4 +226,17 @@ footer > p > a{
 
 .mark{
     background-color: #bbb9b9;
+}
+
+.percent {
+    border: 1px solid black;
+    width: 150px;
+    height: 16px;
+    display: block;
+    margin-left: 20px;
+}
+
+.percentChildren {
+    height: 100%;
+    background-color: green;
 }
