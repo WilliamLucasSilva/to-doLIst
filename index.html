@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-do</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <header>
-        <a href="#"><h2>@dev_wiil</h2></a>
+        <a href="https://www.instagram.com/dev_wiil/?next=%2F"><h2>@dev_wiil</h2></a>
         <nav>
-            <button>login</button>
-            <button>logout</button>
+            <div id="usernameDiv"></div>
+            <a href="./html/login.html" id="login"><button>login</button></a>
+            <a href="#" id="logout"><button>logout</button></a>
         </nav>
     </header>
     <main>
@@ -54,13 +55,20 @@
                     <button class="svgButtons" id="exclude">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30">
                             <path d="M 13 3 A 1.0001 1.0001 0 0 0 11.986328 4 L 6 4 A 1.0001 1.0001 0 1 0 6 6 L 24 6 A 1.0001 1.0001 0 1 0 24 4 L 18.013672 4 A 1.0001 1.0001 0 0 0 17 3 L 13 3 z M 6 8 L 6 24 C 6 25.105 6.895 26 8 26 L 22 26 C 23.105 26 24 25.105 24 24 L 24 8 L 6 8 z"></path>
-                            </svg>
+                        </svg>
                     </button>
                 </div>
             </div>
         </section>
     </main>
-    <footer><p>Created By <a href="#">@dev_wiil</a></p></footer>
+    <footer><p>Created By <a href="https://www.instagram.com/dev_wiil/?next=%2F">@dev_wiil</a></p></footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth-compat.js"></script>
+
+    <script type="module" src="./dataBase/dataBase.js">
+    </script>
 
     <script type="module" src="main.js"></script>
 </body>

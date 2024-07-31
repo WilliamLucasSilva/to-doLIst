@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <a href="../index.html" id="back"><p>back</p></a>
+
+    <div>
+        <h1>@dev_wiil</h1>
+    </div>
+    
+    <div>
+        <form action="../index.html" id="login">
+            <div>
+                <label for="username">username</label>
+                <input type="text" name="username" id="username" minlength="4" maxlength="12" required>
+            </div>
+    
+            <div>
+                <label for="password">password</label>
+                <input type="password" name="password" id="password" minlength="8" maxlength="24" required>
+            </div>
+        
+            <button type="submit">login</button>
+        
+        </form>
+    
+    </div>
+    <footer>
+        <p>new here?</p>
+        <a href="#">create a account</a>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth-compat.js"></script>
+
+    <script type="module" src="../dataBase/dataBase.js">
+    </script>
+
+    <script type="module" src="../components/login.js"></script>
+</body>
+</html>

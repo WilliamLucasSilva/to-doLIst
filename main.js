@@ -12,6 +12,29 @@ const SHARE = {
 var selectedExclude = [null, null]
 var selected = ['/', '/']
 
+const username = localStorage.getItem('username')
+const log = {
+    login: document.getElementById('login'),
+    logout: document.getElementById('logout'),
+}
+
+if(!username){
+    log.login.style.display = 'block'
+    log.logout.style.display = 'none'
+}else{
+    log.login.style.display = 'none'
+    log.logout.style.display = 'block'
+
+    let usernameDiv = document.getElementById('usernameDiv')
+    usernameDiv.textContent = username
+
+}
+
+log.logout.addEventListener('click', () => {
+    localStorage.clear()
+    window.location.href = './html/login.html'
+})
+
 // Classes
 
 class BaseElement {
@@ -44,6 +67,7 @@ class BaseElement {
             this.element.style.display = this.open ? "block" : "none"
             this.elementChildren[0].innerHTML = this.open ? `${SYMBOLS.open} ` : `${SYMBOLS.close} `
         }
+
 
         
     
@@ -164,7 +188,7 @@ class Folder extends BaseElement {
             let children = Object.values(obj.children)
             let childrenTotal = children.length
             let childrenCompleted = children.filter( e => e.type == 'task').filter(e => e.elementChildren[2].checked).length +  children.filter( e => e.type == 'folder').filter(e => e.complete).length
-            let Percent = Math.round((childrenCompleted * 100) / childrenTotal)
+            let Percent = Math.round((childrenCompleted * 100) / childrenTotal) ? Math.round((childrenCompleted * 100) / childrenTotal) : 0
 
             obj.percentChildrenDiv.style.width = `${Percent}%`
             if(Percent == 100){
@@ -197,6 +221,7 @@ class Folder extends BaseElement {
 
             delete this.children[name];
             changeSelected(this.path, selected)
+            this.percentAtt(this)
 
             
     }
