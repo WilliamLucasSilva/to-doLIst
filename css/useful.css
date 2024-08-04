@@ -1,0 +1,16 @@
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gradient{
+    background: rgb(32,0,93);
+
+    background: linear-gradient(128deg,
+    rgba(32,0,93,1) 0%,
+    rgba(32,3,151,1) 23%,
+    rgba(5,108,205,1) 57%,
+    rgba(6,255,255,1) 100%);
+
+}

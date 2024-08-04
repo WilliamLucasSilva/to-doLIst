@@ -3,29 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-do</title>
+    <title>Lista de Tarefas</title>
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/useful.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-    <header>
+
+    <header class="gradient">
         <a href="https://www.instagram.com/dev_wiil/?next=%2F"><h2>@dev_wiil</h2></a>
-        <nav>
-            <div id="usernameDiv"></div>
-            <a href="./html/login.html" id="login"><button>login</button></a>
-            <a href="#" id="logout"><button>logout</button></a>
-        </nav>
     </header>
-    <main>
+
+    <main class="center">
         <section>
-            <div class="title">
-                <h1>To-Do List with percent</h1>
+            <div class="title center gradient">
+                <h1>Lista de tarefas com porcentagem</h1>
             </div>
             
             <div class="main" id="main">
             </div>
             
-            <div class="share">
+            <div class="share center">
                 <div class="selectType">
                     <div>
                         <input type="radio" name="type" id="toDo" checked>
@@ -63,14 +62,7 @@
             </div>
         </section>
     </main>
-    <footer><p>Created By <a href="https://www.instagram.com/dev_wiil/?next=%2F">@dev_wiil</a></p></footer>
-
-    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth-compat.js"></script>
-
-    <script type="module" src="./dataBase/dataBase.js">
-    </script>
+    <footer class="center"><p>Created By <a href="https://www.instagram.com/dev_wiil/?next=%2F">@dev_wiil</a></p></footer>
 
     <script type="module" src="main.js"></script>
 </body>

@@ -1,0 +1,42 @@
+.folder{
+    margin-left: 10px;
+    width: 100%;
+}
+
+.folderButton{
+    font-size: 21px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.folderButton > * {
+    margin-left: 2px;
+}
+
+.task{
+    font-size: 18px;
+    margin-left: 3px;
+    width: 100%;
+}
+
+.checkbox{
+    margin-left: 5px;
+}
+
+.mark{
+    background-color: #bbb9b9;
+}
+
+.percent {
+    border: 1px solid black;
+    width: 150px;
+    height: 16px;
+    display: block;
+    margin-left: 20px;
+}
+
+.percentChildren {
+    height: 100%;
+    background-color: green;
+}
