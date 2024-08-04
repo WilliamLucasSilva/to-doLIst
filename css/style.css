@@ -141,17 +141,17 @@ h1 {
     cursor: pointer;
 }
 
-.send{
+.send > form{
     display: flex;
 
     justify-content: flex-start;
     align-items: center;
 
-    width: 40%;
+    width: 100%;
     height: 50px;
 }
 
-.send > input{
+.send > form > input{
     width: 80%;
     height: 50px;
 
@@ -159,7 +159,7 @@ h1 {
     font-size: 20px;
 }
 
-.send > input:active{
+.send > form > input:active{
     width: 70%;
     height: 50px;
 

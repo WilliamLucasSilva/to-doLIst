@@ -10,7 +10,7 @@ const firebaseApp = firebase.initializeApp({
 
 export default {
   db: firebaseApp.firestore(),
-  auth: firebaseApp.auth(),
+  auth: firebaseApp.auth(), 
 }
 
 

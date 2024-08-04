@@ -187,7 +187,7 @@ class Folder extends BaseElement {
         if(obj.name != "root"){
             let children = Object.values(obj.children)
             let childrenTotal = children.length
-            let childrenCompleted = children.filter( e => e.type == 'task').filter(e => e.elementChildren[2].checked).length +  children.filter( e => e.type == 'folder').filter(e => e.complete).length
+            let childrenCompleted = children.filter( e => e.type == 'task').filter(e => e.elementChildren[2].checked).length + children.filter( e => e.type == 'folder').filter(e => e.complete).length
             let Percent = Math.round((childrenCompleted * 100) / childrenTotal) ? Math.round((childrenCompleted * 100) / childrenTotal) : 0
 
             obj.percentChildrenDiv.style.width = `${Percent}%`
@@ -307,6 +307,10 @@ function changeExclude(obj) {
         changeSelected(obj, selectedExclude)
     }
 }
+
+document.getElementById("sendForm").addEventListener("submit", (event) => {
+    event.preventDefault()
+})
 
 document.getElementById("send").addEventListener("click", () => {
     SHARE.TYPE = document.getElementById("toDo").checked ? "task" : "folder";
