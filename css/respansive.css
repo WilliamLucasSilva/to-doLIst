@@ -1,0 +1,25 @@
+@media (max-width: 850px) {
+    #mainContainer{
+        height: 800px;
+    }
+
+    #main{
+        height: 70%;
+    }
+
+    #share{
+        flex-direction: column;
+    }
+
+    #shareType{
+        order: 2;
+    }
+
+    #shareSend{
+        order: 1;
+    }
+
+    #shareAdtions{
+        order: 3;
+    }
+}

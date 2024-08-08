@@ -19,8 +19,6 @@ function removeWord(str, word) {
 
 export function load() {
     loop(JSON.parse(localStorage.getItem('tree')))
-
-    console.log('finish')
 }
 
 function loop(obj) {

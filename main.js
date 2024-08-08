@@ -4,7 +4,6 @@ import { SDK } from "./js/tree.js";
 import { load } from "./js/loadSave.js";
 
 if(localStorage.getItem("tree")){
-    console.log(JSON.parse(localStorage.getItem("tree")).children)
     load()
 }else{
     localStorage.setItem("tree", JSON.stringify({
@@ -20,15 +19,10 @@ const SHARE = {
     TYPE: document.getElementById("toDo").checked ? "task" : "folder",
 };
 
-document.getElementById("sendForm").addEventListener("submit", (event) => {
-    event.preventDefault()
-})
-
 document.getElementById("send").addEventListener("click", () => {
     SHARE.TYPE = document.getElementById("toDo").checked ? "task" : "folder";
     let NAME = SHARE.NAME.value;
     if (!NAME) {
-        alert("Preencha o campo de texto!");
         return;
     }
 

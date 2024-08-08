@@ -154,14 +154,10 @@ class Folder extends BaseElement {
                 case "task":
                     this.children[name] = new Task(this.path, this, name);
                     break;
-                default:
-                    alert(`O tipo '${type}' é desconhecido`);
             }
             
             this.percentAtt(this)
             
-        } else {
-            alert(`O ${type} '${name}' já existe.`);
         }
     }
 
@@ -195,9 +191,6 @@ class Folder extends BaseElement {
                 break;
                 case 'task':
                     this.element.removeChild(this.children[name].element)
-                break;
-                default:
-                    alert(`'${name}' não existe.`)
                 break;
             }
 
@@ -245,11 +238,7 @@ class FileSystem {
         if (folder) {
             if (folder.type === "folder") {
                 folder.addChildren(name, type);
-            } else {
-                alert("Isso não é uma pasta");
             }
-        } else {
-            alert(`O caminho '${path}' não existe.`);
         }
     }
 
@@ -258,11 +247,7 @@ class FileSystem {
         if (folder) {
             if (folder.type === "folder") {
                 folder.remove(name);
-            } else {
-                alert("Isso não é uma pasta");
             }
-        } else {
-            alert(`O caminho '${path}' não existe.`);
         }
     }
 
