@@ -1,22 +1,5 @@
 import { system } from "./system.js"
 
-function removeWord(str, word) {
-    
-    const regex = new RegExp(`\\b${word}\\b`, 'gi');
-
-    return str.replace(regex, '').trim();
-  }
-
-  function getParentPath(e) {
-    if (e.path === `/${e.name}`) {
-      return '/';
-    } else {
-      let newPath = removeWord(e.path, `/${e.name}`);
-      
-      return newPath ? `/${newPath}` : '/';
-    }
-  }
-
 export function load() {
   loop(JSON.parse(localStorage.getItem('tree')))
 }
