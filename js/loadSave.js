@@ -18,22 +18,21 @@ function removeWord(str, word) {
   }
 
 export function load() {
-    loop(JSON.parse(localStorage.getItem('tree')))
+  loop(JSON.parse(localStorage.getItem('tree')))
 }
 
 function loop(obj) {
     if (obj.children && Object.values(obj.children).length) {
       for (const e of Object.values(obj.children)) {
-        let newPath = getParentPath(e);
-  
-        system.addChildren(newPath, e.name, e.type);
-        if (e.type === 'task') {
-          if (e.checked) {
-            system.search(e.path).checked;
-          }
-        } else if (e.type === 'folder') {
-          loop(e);
+
+      system.addChildren(obj.path, e.name, e.type);
+      if (e.type === 'task') {
+        if (e.checked) {
+          system.search(e.path).checked;
         }
+      } else if (e.type === 'folder') {
+        loop(e);
+      }
       }
     }
 }
