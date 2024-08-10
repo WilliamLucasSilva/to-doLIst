@@ -132,6 +132,11 @@ h1 {
     justify-content: flex-start;
 }
 
+.info *{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
 footer{
     width: 100%;
 }
