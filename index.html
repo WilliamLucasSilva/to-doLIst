@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+
+    
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/useful.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/respansive.css">
+    <link rel="stylesheet" href="./css/animations.css">
+
+</head>
+<body>
+
+    <header>
+        <div class="neon"><a href="https://www.instagram.com/dev_wiil/?next=%2F"><h2>@dev_wiil</h2></a></div>
+    </header>
+
+    <main>
+        <section>
+            <h1 class="title">Lista de tarefas com porcentagem</h1>
+            
+            <div class="todoList" id="todoList">
+            </div>
+            
+            <form id="taskManager">
+                <button name="inputName" id="finishModel">
+                    <div id="finishModelContent"></div>
+                </button>
+                
+                <div id="hiddenGrid">
+                    <input type="text" name="inputName" id="nameModel" autocomplete="off" placeholder="  Sua tarefa:" autofocus>
+
+                    <div id="selectType">
+                        <label for="task" class="selectTypeButton typeChecked">
+                            <input type="radio" name="selectType" id="task" checked>
+                            <span>task</span>
+                        </label>
+
+                        <label for="folder" class="selectTypeButton">
+                            <input type="radio" name="selectType" id="folder">
+                            <span>Folder</span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section>
+            <h2 class="title">Futuras funcionalidades</h2>
+
+            <ul class="list">
+                <li>Sistema de login</li>
+                <li>Pre-sets</li>
+                <li>Gestor de tempo</li>
+            </ul>   
+        </section>
+        
+        <footer class="center"><p style="color: var(--text-color);">Created By <a href="https://www.instagram.com/dev_wiil/?next=%2F">@dev_wiil</a></p></footer>
+    </main>
+   
+    <script src="./js/animations.js" type="module"></script>
+    <script src="./main.js" type="module"></script>
+</body>
+</html>

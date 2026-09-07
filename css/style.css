@@ -1,0 +1,232 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+
+    /*variables */
+
+    /*color */
+    --main-color: #6edc4d;
+    --bg-color--main: #2d2d2d;
+    --bg-color--second: #5f5f5f;
+    --text-color: #fff;
+    --text-color--second: #c1c1c1;
+
+    /*size */
+
+    --gap--small: 8px;
+    --gap--normal: 16px;
+    --gap--normal2: 24px;
+    --gap--big: 32px;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    position: relative;
+    z-index: -2;
+
+    display: flex;
+
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: var(--gap--big);
+
+    background-color: var(--bg-color--main);
+}
+
+body::-webkit-scrollbar {
+    display: none; 
+}
+
+/* header --------------------------------------*/
+
+header{
+    display: flex;
+
+    align-items: start;
+
+    position: fixed;
+    z-index: -1;
+
+    width: 100%;
+
+    border: solid 1px var(--text-color--second);
+    border-left: 0px;
+    border-right: 0px;
+
+    background-color: var(--bg-color--main);
+}
+
+header > div{
+    margin: var(--gap--normal) var(--gap--normal);
+    margin-bottom: var(--gap--big);
+}
+
+/* main --------------------------------------*/
+
+main{
+    width: 90%;
+
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 96px;
+
+    border: solid 1px var(--text-color--second);
+    background-color: var(--bg-color--main);
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: var(--gap--big);
+}
+
+    
+/* sections --------------------------------------*/
+
+/* todo-List --------------------------------------*/
+
+.title{
+    color: var(--text-color);
+    font-size: 32px;
+
+    margin: var(--gap--normal);
+    margin-left: var(--gap--big)
+}
+
+.todoList{
+    height: 500px;
+    width: 95%;
+    margin-left: var(--gap--big);
+
+    overflow: scroll;
+    overflow: auto;
+
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+    
+    background-color: var(--bg-color--second);
+}
+
+.todoList::-webkit-scrollbar {
+    display: none; 
+}
+
+/*task manager ------------------------------*/
+
+#taskManager{
+    display: flex;
+    
+    justify-content: start;
+    align-items: center;
+    gap: var(--gap--small);
+
+    margin-left: var(--gap--big);
+    margin-top: -64px;
+
+    width: max-content;
+}
+
+/* create Model*/
+
+#finishModel{
+    background-color: transparent;
+
+    width: 64px;
+    height: 64px;
+
+    position: relative;
+    cursor: pointer;
+}
+
+#nameModel{
+    display: block;
+
+    width: 256px;
+    height: 45px;
+
+    color: var(--text-color);
+    font-size: 16px;
+
+    background-color: var(--bg-color--main);
+
+}
+
+#nameModel:focus-visible{
+    border: 2px solid var(--text-color--second);
+    outline: none;
+}
+
+/*select type*/
+
+#selectType{
+    display: flex;
+
+    gap: var(--gap--small);
+    justify-content: start;
+    align-items: center;
+
+    height: 100%;
+}
+
+#selectType > label{
+    display: flex;
+
+    overflow: hidden;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 92px;
+    height: 48px;
+
+    color: var(--text-color--second);
+}
+
+#selectType > label > input{
+    display: none;
+}
+
+/* features*/
+
+.list{
+    margin-left: var(--gap--big);
+    margin-top: var(--gap--normal);
+    list-style: none;
+
+    color: var(--text-color);
+    font-size: 20px;
+}
+
+.list li{
+    margin: 2px;
+    margin-left: 6px;
+}
+
+/* footer ----------------------------------------*/
+
+footer{
+    width: 100%;
+    margin-bottom: var(--gap--normal2);
+}
+
+footer > p{
+    font-size: 20px;
+}
+
+footer > p > a{
+    text-decoration: none;
+    color: var(--main-color);
+}
+
+footer > p > a:hover{
+    text-shadow: 
+    0 0 8px var(--main-color),   
+    0 0 16px var(--main-color),   
+    0 0 32px var(--main-color),   
+    0 0 64px hsla(120, 100%, 40%, 0.5); 
+}

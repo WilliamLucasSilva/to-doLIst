@@ -1,0 +1,177 @@
+.folder{
+    margin-left: 10px;
+    width: 100%;
+    border-left: 1px solid var(--text-color--second);
+}
+
+.folderButton{
+    color: var(--text-color--second);
+    font-size: 21px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.flexStart{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    gap: var(--gap--small);
+}
+
+.folderName{
+    display: block;
+
+    font-size: 17px;
+
+    color: var(--text-color--second);
+    background-color: var(--bg-color--second);
+}
+
+.folderName::placeholder{
+    color: var(--text-color);
+}
+
+.folderName:focus-visible{
+    border: 2px solid var(--text-color--second);
+    outline: none;
+}
+
+
+
+.task{
+    font-size: 18px;
+    margin-left: 3px;
+}
+
+.checkbox{
+    margin-left: 5px;
+}
+
+.mark{
+    background-color: #bbb9b9;
+}
+
+.percent {
+    border: 1px solid var(--text-color--second);
+    width: 150px;
+    height: 24px;
+    display: block;
+    margin-left: 20px;
+}
+
+.percentChildren {
+    height: 100%;
+    background-color: var(--text-color--second)
+}
+
+.bkAnimation{
+    animation: bk 2.5s linear infinite;
+}
+
+@keyframes bk {
+    0% {
+        background: linear-gradient(128deg, rgba(234,67,53,1) 0%, rgba(251,188,4,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1);
+    }
+    4% {
+        background: linear-gradient(148deg, rgba(251,188,4,1) 0%, rgba(234,67,53,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.1);
+    }
+    8% {
+        background: linear-gradient(168deg, rgba(52,168,83,1) 0%, rgba(205,83,58,1) 50%, rgba(251,188,4,1) 100%);
+        filter: brightness(1.2);
+    }
+    12% {
+        background: linear-gradient(188deg, rgba(234,67,53,1) 0%, rgba(251,188,4,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.3);
+    }
+    16% {
+        background: linear-gradient(208deg, rgba(52,168,83,1) 0%, rgba(205,83,58,1) 50%, rgba(248,169,12,1) 100%);
+        filter: brightness(1.15);
+    }
+    20% {
+        background: linear-gradient(228deg, rgba(248,169,12,1) 0%, rgba(52,168,83,1) 50%, rgba(234,67,53,1) 100%);
+        filter: brightness(1.2);
+    }
+    24% {
+        background: linear-gradient(248deg, rgba(205,83,58,1) 0%, rgba(248,169,12,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.25);
+    }
+    28% {
+        background: linear-gradient(268deg, rgba(234,67,53,1) 0%, rgba(251,188,4,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.3);
+    }
+    32% {
+        background: linear-gradient(288deg, rgba(52,168,83,1) 0%, rgba(205,83,58,1) 50%, rgba(248,169,12,1) 100%);
+        filter: brightness(1.2);
+    }
+    36% {
+        background: linear-gradient(308deg, rgba(234,67,53,1) 0%, rgba(248,169,12,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.1);
+    }
+    40% {
+        background: linear-gradient(328deg, rgba(52,168,83,1) 0%, rgba(205,83,58,1) 50%, rgba(251,188,4,1) 100%);
+        filter: brightness(1.3);
+    }
+    44% {
+        background: linear-gradient(348deg, rgba(248,169,12,1) 0%, rgba(234,67,53,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.15);
+    }
+    48% {
+        background: linear-gradient(368deg, rgba(205,83,58,1) 0%, rgba(248,169,12,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.25);
+    }
+    52% {
+        background: linear-gradient(388deg, rgba(234,67,53,1) 0%, rgba(251,188,4,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.3);
+    }
+    56% {
+        background: linear-gradient(408deg, rgba(52,168,83,1) 0%, rgba(205,83,58,1) 50%, rgba(248,169,12,1) 100%);
+        filter: brightness(1.2);
+    }
+    60% {
+        background: linear-gradient(428deg, rgba(234,67,53,1) 0%, rgba(248,169,12,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.15);
+    }
+    64% {
+        background: linear-gradient(448deg, rgba(52,168,83,1) 0%, rgba(205,83,58,1) 50%, rgba(251,188,4,1) 100%);
+        filter: brightness(1.2);
+    }
+    68% {
+        background: linear-gradient(468deg, rgba(248,169,12,1) 0%, rgba(234,67,53,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.3);
+    }
+    72% {
+        background: linear-gradient(488deg, rgba(205,83,58,1) 0%, rgba(248,169,12,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.2);
+    }
+    76% {
+        background: linear-gradient(508deg, rgba(234,67,53,1) 0%, rgba(251,188,4,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.1);
+    }
+    80% {
+        background: linear-gradient(528deg, rgba(52,168,83,1) 0%, rgba(205,83,58,1) 50%, rgba(248,169,12,1) 100%);
+        filter: brightness(1.15);
+    }
+    84% {
+        background: linear-gradient(548deg, rgba(234,67,53,1) 0%, rgba(248,169,12,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.2);
+    }
+    88% {
+        background: linear-gradient(568deg, rgba(52,168,83,1) 0%, rgba(205,83,58,1) 50%, rgba(251,188,4,1) 100%);
+        filter: brightness(1.3);
+    }
+    92% {
+        background: linear-gradient(588deg, rgba(248,169,12,1) 0%, rgba(234,67,53,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.2);
+    }
+    96% {
+        background: linear-gradient(608deg, rgba(205,83,58,1) 0%, rgba(248,169,12,1) 50%, rgba(52,168,83,1) 100%);
+        filter: brightness(1.3);
+    }
+    100% {
+        background: linear-gradient(488deg, rgba(205,83,58,1) 0%, rgba(248,169,12,1) 25%, rgba(52,168,83,1) 75%, rgba(234,67,53,1) 100%);
+        filter: brightness(1);
+    }
+}
